@@ -81,7 +81,6 @@ public class Project_Page {
                     String date_begin = date_begin_field.getText();
                     String date_planned = date_planned_finish_field.getText();
                     String date_finish = date_finish_field.getText();
-                    //String project_seccess = success_box.getSelectedItem().toString();
                     String project_seccess = (String)success_box.getSelectedItem();
                     dbWorker.AddProject(name, date_begin, date_planned, date_finish, project_seccess);
                     project_list_table.updateUI();
