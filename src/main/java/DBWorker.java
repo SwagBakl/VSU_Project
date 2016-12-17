@@ -105,7 +105,7 @@ import java.util.List;
             statement.setString(2, date_begin);
             statement.setString(3, date_planned_finish);
             statement.setString(4, date_finish);
-            statement.setString(5, date_finish);
+            statement.setString(5, project_seccess);
             statement.executeUpdate();
 
         }catch (Exception e){

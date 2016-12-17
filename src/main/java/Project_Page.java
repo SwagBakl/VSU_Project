@@ -24,6 +24,7 @@ public class Project_Page {
         jf.setVisible(true);
 
         List<Project> projects = new ArrayList<Project>();
+        String[] truefalse = {"true", "false"};
         JButton add_project_button = new JButton("Add project");
         JButton remove_project_button = new JButton("Delete project");
         JButton edit_project_button = new JButton("Edit project");
@@ -32,8 +33,9 @@ public class Project_Page {
         final JTextField date_begin_field = new JTextField();
         final JTextField date_planned_finish_field = new JTextField();
         final JTextField date_finish_field = new JTextField();
-        final JTextField project_seccess_field = new JTextField();
+       // final JTextField project_seccess_field = new JTextField();
         final JTextField id_field = new JTextField();
+        final JComboBox success_box = new JComboBox(truefalse);
 
         JLabel name_label = new JLabel("Name: ");
         JLabel date_begin_label = new JLabel("Begin's date: ");
@@ -79,7 +81,8 @@ public class Project_Page {
                     String date_begin = date_begin_field.getText();
                     String date_planned = date_planned_finish_field.getText();
                     String date_finish = date_finish_field.getText();
-                    String project_seccess = project_seccess_field.getText();
+                    //String project_seccess = success_box.getSelectedItem().toString();
+                    String project_seccess = (String)success_box.getSelectedItem();
                     dbWorker.AddProject(name, date_begin, date_planned, date_finish, project_seccess);
                     project_list_table.updateUI();
                 }catch (Exception p){
@@ -90,7 +93,7 @@ public class Project_Page {
                 date_begin_field.setText("");
                 date_planned_finish_field.setText("");
                 date_finish_field.setText("");
-                project_seccess_field.setText("");
+                //project_seccess_field.setText("");
 
             }
         });
@@ -106,7 +109,7 @@ public class Project_Page {
                 date_begin_field.setText(model.getValueAt(i,2).toString());
                 date_planned_finish_field.setText(model.getValueAt(i,3).toString());
                 date_finish_field.setText(model.getValueAt(i,4).toString());
-                project_seccess_field.setText(model.getValueAt(i,5).toString());
+                //project_seccess_field.setText(model.getValueAt(i,5).toString());
             }
         });
 
@@ -127,7 +130,7 @@ public class Project_Page {
             }
         });
 
-        update_project_button.addActionListener(new ActionListener() {
+       /* update_project_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String name = name_field.getText();
@@ -136,12 +139,12 @@ public class Project_Page {
                 String passwd = date_finish_field.getText();
                 int role = Integer.parseInt(project_seccess_field.getText());
                 try {
-                    dbWorker.UpdateUser(name,secondName,login,passwd,role);
+                    dbWorker.UpdateUser(name, secondName, login, passwd, role);
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
             }
-        });
+        });*/
 
         jf.setLayout(null);
 
@@ -155,11 +158,12 @@ public class Project_Page {
         date_finish_field.setBounds(410, 70, 150, 25);
         project_list_table.setBounds(0, 200, 640, 239);
         project_seccess_label.setBounds(376, 100, 50, 25);
-        project_seccess_field.setBounds(410, 100, 50, 25);
+        //project_seccess_field.setBounds(410, 100, 50, 25);
+        success_box.setBounds(410, 100, 70, 25);
         id_field.setBounds(40, 70, 150, 25);
         add_project_button.setBounds(90,170,130,25);
         remove_project_button.setBounds(220,170,130,25);
-        edit_project_button.setBounds(350,170,130,25);
+        edit_project_button.setBounds(350,170, 130, 25);
         update_project_button.setBounds(480,170,130,25);
 
         jf.add(add_project_button);
@@ -176,8 +180,9 @@ public class Project_Page {
         jf.add(project_list_table);
         jf.add(scrollPane);
         jf.add(project_seccess_label);
-        jf.add(project_seccess_field);
+        //jf.add(project_seccess_field);
         jf.add(update_project_button);
+        jf.add(success_box);
         //jf.add(id_field);
 
 

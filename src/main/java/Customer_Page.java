@@ -109,7 +109,7 @@ public class Customer_Page {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                
+
                 int id = Integer.parseInt(id_field.getText());
                 try {
                     dbWorker.DeleteCustomer(id);
